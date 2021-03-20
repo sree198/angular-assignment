@@ -1,0 +1,71 @@
+<h1><span>{{title}} app is running!</span></h1>
+<h2 [innerText]="msg"></h2>
+<button [disabled]="isDisabled">Disabled</button>
+  <h1>Today's date is : <app-date></app-date></h1>
+  <h1>Today's time is : <app-time></app-time></h1>
+  <p></p>
+  <input type="text" [(ngModel)]="message"><p></p>
+  your message is: {{message | uppercase}} <p></p>
+  <button (click)="showMessage()">Click here</button>
+
+  Amount is : {{amount}}<br />
+  To decimal : {{ amount | number: '2.2-2'}}<br />
+  USD : {{amount | currency :'USD': true}}<br />
+  INR: {{amount | currency :'INR': true}}<br />
+  PERCENTAGE: {{amount | percent : '.2'}}<br />
+  <h1>Custom Pipe</h1> <br>
+  <h1>Square root of 36 is : 6 </h1>
+
+  <div>
+    <h3>Attribute Directives</h3>
+    <span [class.red]="true">Attribute Change</span><br />
+    <span [ngClass]="{'blue':true}">Attribute Change by Using NgClass</span><br />
+    <span [style.color]="'magenta'">Attribute Change</span><br />
+  <span [ngStyle]="{'font-size.px':24, 'color':'cyan'}">Attribute Change by Using NgStyle</span>
+  </div>
+
+  <div>
+    <h2>ngforDemo</h2>
+    <ul>
+      <li *ngFor="let course of courseList">
+        {{course}}
+      </li>
+    </ul>
+  </div>
+
+  <div>
+    <h2>ngSwitch Demo</h2>
+    <table style="width:50%;border:solid;border-color:blue;border-width:thin;">
+        <thead>
+            <tr >
+                <td>Srl No</td>
+                <td>Student Name</td>
+                <td>Course</td>
+                <td>Grade</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let student of studentList;" [ngSwitch]="student.Grade">
+                <td>{{student.SrlNo}}</td>
+                <td>{{student.Name}}</td>
+                <td>{{student.Course}}</td>
+                <td>
+<span *ngSwitchCase="'A'" [ngStyle]="{'font-size':'18px','color':'green', 'font-weight': 'bold'}">{{student.Grade}}
+</span>
+<span *ngSwitchCase="'B'" [ngStyle]="{'font-size':'18px','color':'blue', 'font-weight': 'bold'}">{{student.Grade}}
+</span> <span *ngSwitchCase="'C'" [ngStyle]="{'font-size':'18px','color':'orange', 'font-weight': 'bold'}">{{student.Grade}}
+</span>
+<span *ngSwitchDefault [ngStyle]="{'font-size':'18px','color':'red', 'font-weight': 'bold'}">{{student.Grade}}
+</span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div>
+  <h1 *ngIf="showInfo"><span>Structural Directives - *ngIf</span></h1> <br />
+  <input type="button" value="{{caption}}" (click)="changeData()"/> 
+</div>
+  <p>
+  </p>
+  <h1>Sum is : {{sum}}</h1>

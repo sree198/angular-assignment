@@ -1,0 +1,62 @@
+<form #personForm="ngForm" (ngSubmit)="onSubmit(personForm)" novalidate>
+  <p>
+    <label for="firstname">FirstName</label>
+    <input type="text" id="firstname" name="firstname" required minlength="3" #firstname="ngModel" [(ngModel)]="person.firstname">
+  </p>
+  <div *ngIf="!firstname?.valid && (firstname?.dirty || firstname?.touched)">
+    <div *ngIf="firstname.errors?.required">
+        FirstName is required
+    </div>
+    <div *ngIf="firstname.errors?.minlength">
+      FirstName minimum length is {{firstname.errors?.minlength?.requiredLength}}
+  </div>
+  </div>
+  <!--<div>Untouched : {{firstname.untouched}}</div>
+  <div>Touched : {{firstname.touched}}</div>
+  <div>Pristine : {{firstname.pristine}}</div>
+  <div>Dirty: {{firstname.dirty}}</div>
+  <div>Valid : {{firstname.valid}}</div>
+  <div>Invalid : {{firstname.invalid}}</div>-->
+  <p>
+    <label for="lastname">LastName</label>
+    <input type="text" id="lastname" name="lastname" required maxlength="10" #lastname="ngModel" [(ngModel)]="person.lastname">
+  </p>
+  <div *ngIf="!lastname?.valid && (lastname?.dirty || lastname?.touched)">
+    <div *ngIf="lastname.errors?.required">
+        LastName is required
+    </div>
+    <div *ngIf="lastname.errors?.maxlength">
+      LastName maximum length is {{lastname.errors?.maxlength?.requiredLength}}
+  </div>
+  </div>
+  <p>
+    <label for="email">Email</label>
+    <input type="text" id="email" name="email" required email #email="ngModel" [(ngModel)]="person.email">
+  </p>
+  <div *ngIf="!email?.valid && (email?.dirty || email?.touched)">
+    <div *ngIf="email.errors?.required">
+        Email is required
+    </div>
+    <div *ngIf="email.errors?.email">
+     Invalid Email Address
+  </div>
+  </div>
+  <p>
+    <label for="gender">Gender</label>
+    <input type="radio" id="gender" name="gender" value="male" required #gender="ngModel" [(ngModel)]="person.gender">
+    Male
+    <input type="radio" id="gender" name="gender" value="female" required #gender="ngModel" [(ngModel)]="person.gender">
+    Female
+  </p>
+  <div *ngIf="!gender?.valid && (gender?.dirty || gender?.touched)">
+    <div *ngIf="gender.errors?.required">
+        Gender is required
+    </div>
+  </div>
+  <p>
+    <button type="submit" [disabled]="!personForm.valid">Submit</button>
+  </p>
+  <p>
+    {{personForm.valid}}
+  </p>
+  </form>

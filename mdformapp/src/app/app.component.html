@@ -1,0 +1,66 @@
+<form [formGroup]="personForm" (ngSubmit)="onSubmit()" novalidate>
+  <p>
+    <label for = "firstname">First Name</label>
+    <input type="text" id="firstname" name="firstname" formControlName ="firstname">
+  </p>
+  <div *ngIf="!firstname?.valid && (firstname?.dirty || firstname?.touched)" >
+    <div [hidden]="!firstname?.errors?.required">
+  First Name is Required
+  </div>
+    <div [hidden]="!firstname?.errors?.minlength">
+  Minimum Length is 3 
+  </div>
+  </div>
+  <p>
+    <label for = "lastname">Last Name</label>
+    <input type="text" id="lastname" name="lastname" formControlName ="lastname">
+  </p>
+  <div *ngIf="!lastname?.valid && (lastname?.dirty || lastname?.touched)" >
+    <div [hidden]="!lastname?.errors?.required">
+      Last Name is Required
+  </div>
+    <div [hidden]="!lastname?.errors?.maxlength">
+  Maximum Length is 10 
+  </div>
+  <div [hidden]="!lastname?.errors?.pattern">
+    Only alphabets are allowed  
+    </div>
+  </div>
+   
+  <p>
+    <label for = "email">Email</label>
+    <input type="text" id="email" name="email" formControlName ="email">
+  </p>
+  <div *ngIf="!email?.valid && (email?.dirty || email?.touched)" >
+    <div [hidden]="!email?.errors?.required">
+      Email is Required
+  </div>
+  <div [hidden]="!email?.errors?.email">
+    Invalid email address
+    </div>
+  </div>
+   
+  <p>
+    <label for = "gender">Gender</label>
+    <input type="radio" id="gender" name="gender" value="male" formControlName ="gender">
+  Male
+  <input type="radio" id="gender" name="gender" value="female" formControlName ="gender">
+  Female
+  <input type="radio" id="gender" name="gender" value="others" formControlName ="gender">
+  Others
+  </p>
+  <div *ngIf="!gender?.valid && (gender?.dirty || gender?.touched)" >
+    <div [hidden]="!gender?.errors?.required">
+      Gender is Required
+  </div>
+  </div>
+   
+  <p>
+    <button type="submit" [disabled]="!personForm.valid">Submit</button>
+  </p>
+   
+  <p>
+    {{personForm.valid}}
+  </p>
+   
+  </form>

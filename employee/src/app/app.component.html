@@ -1,0 +1,25 @@
+<input type="text" [(ngModel)]="searchText" 
+            placeholder="Enter some text to search" >
+<br />
+<br/>
+<br/>
+<table border="1">
+              <thead>
+                  <tr>
+                      <th>Emp Name</th>
+                      <th>Designation</th>
+                      <th>Salary</th>
+                      <th></th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr *ngFor="let employee of empdata | filter : searchText; let i=index">
+                     
+                    <td>{{employee.name}}</td>
+                    <td>{{employee.designation}}</td>
+                    <td>{{employee.salary}}</td>
+                    <td><button id="remove" (click)="hello(i)">Remove</button></td>
+                  </tr>
+
+              </tbody>
+</table>
